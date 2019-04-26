@@ -38,7 +38,7 @@ public class PersonalController {
 
 	@RequestMapping("/consulta")
 	@ResponseBody
-	public String getIDParam(@RequestParam int id) {
+	public String getIDParam(@RequestParam (defaultValue = "0") int id) {
 		
 		return this.getBaseDeDades().get(id);
 
