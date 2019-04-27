@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,18 +40,32 @@ public class PersonalController {
 
 	@RequestMapping("/consulta")
 	@ResponseBody
-	public String getIDParam(@RequestParam (defaultValue = "0") int id) {
-		
+	public String getIDParam(@RequestParam(defaultValue = "0") int id) {
+
 		return this.getBaseDeDades().get(id);
 
 	}
-	
+
 	@RequestMapping("/persona/{id}")
 	@ResponseBody
-	public String getIDPath(@PathVariable  int id) {
-		
+	public String getIDPath(@PathVariable int id) {
+
 		return this.getBaseDeDades().get(id);
 
 	}
-	
+
+	@RequestMapping(value = "/afegir", method = RequestMethod.POST)
+	@ResponseBody
+	public String getMethodPost(@RequestParam(value = "nom") String nom) {
+
+		this.getBaseDeDades().add(nom);
+		
+		if (nom != null) {
+			
+			return "ok";
+		}
+		return null;
+
+	}
+
 }
