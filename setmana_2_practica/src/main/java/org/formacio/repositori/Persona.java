@@ -1,9 +1,12 @@
 package org.formacio.repositori;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@XmlRootElement
 public class Persona {
-
+	@JsonProperty("contacte")
 	private String clau;
 	private String nom;
 	private String telefon;
