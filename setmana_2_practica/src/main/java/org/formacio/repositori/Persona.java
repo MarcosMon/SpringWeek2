@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlRootElement
 public class Persona {
-	@JsonProperty("contacte")
+	
 	private String clau;
+	@JsonProperty("contacte")
 	private String nom;
 	private String telefon;
 	

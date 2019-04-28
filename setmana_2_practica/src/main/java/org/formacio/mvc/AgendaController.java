@@ -35,16 +35,28 @@ public class AgendaController {
 
 	@RequestMapping(path = "/contacte/{id}")
 	@ResponseBody
-	public Persona getPersona(@PathVariable String id) {
-		
-		if(agenda.recupera(id)!= null) {
+	public Persona encontrarPersona(@PathVariable String id) throws Exception {
+		Exception error = new Exception();
+		Persona contacto = agenda.recupera(id);
+
+		if (contacto != null) {
 			
-			return agenda.recupera(id);
-		}
-		else {
-			return null;
+			return contacto;
+			
+		} else {
+			
+			throw error;
 		}
 
 	}
+
+	@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Página no encontrada")
+	@ExceptionHandler()
+	public String error(Exception error) {
+		
+		return error.getMessage();
+	}
 	
+	
+
 }
